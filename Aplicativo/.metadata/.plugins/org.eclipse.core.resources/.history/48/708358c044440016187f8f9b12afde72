@@ -1,0 +1,33 @@
+package aplicativo.br;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+public class Escritor{
+
+	public void escritor(ArrayList<Pagamento> lista) throws IOException {
+		
+		
+		FileOutputStream arquivo = new FileOutputStream("arquivo.txt");
+		PrintWriter pr = new PrintWriter(arquivo);
+		
+		
+		pr.println("|--------------------------|");
+		pr.println("| Relatorio de Pagamentos  |");
+		pr.println("|--------------------------|");
+		
+		int i = 0;
+		
+		for(Pagamento pagamento: lista ){
+			i++;
+			pagamento.imprimirDetalhes(i);
+			System.out.println("|-------------------------|");
+		}
+		pr.close();
+		arquivo.close();
+		
+	}
+}
